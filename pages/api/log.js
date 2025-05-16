@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   }
 
   const { name, email, action } = req.body;
-
   if (!email) {
     return res.status(400).json({ error: 'Missing email' });
   }
@@ -15,7 +14,7 @@ export default async function handler(req, res) {
     method: 'POST',
     headers: {
       Authorization: 'Bearer AUEfAAIjcDFkMTBkNTFmYmIzM2I0ZGQwYTUzODk5NDI2YmZkNTMwZHAxMA',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ name, email, action, timestamp: Date.now() }),
   });
@@ -23,4 +22,3 @@ export default async function handler(req, res) {
   const data = await response.json();
   res.status(200).json({ success: true, key, data });
 }
-
